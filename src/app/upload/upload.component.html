@@ -1,0 +1,106 @@
+<ngx-spinner
+  bdColor="rgba(51, 51, 51, 0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-clip-rotate-multiple"
+></ngx-spinner>
+<mat-sidenav-container fullscreen>
+  <mat-sidenav mode="side" opened>
+    <div class="sidenav_text">
+      <div><p>Pendências</p></div>
+    </div>
+    <mat-nav-list class="listMenu">
+      <mat-list-item
+        [routerLink]="['/upload']"
+        routerLinkActive="activeRouter"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Upload</mat-list-item
+      >
+      <mat-list-item [routerLink]="['/dashboard/adm']" class="colorMainText"
+        >Relatórios</mat-list-item
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div>
+      <mat-toolbar class="header" color="primary">
+        <mat-toolbar-row>
+          <span>Upload</span> <span class="spacer"></span>
+          <mat-icon class="icon">logout</mat-icon>
+        </mat-toolbar-row>
+      </mat-toolbar>
+    </div>
+    <div class="main">
+      <h4>Upload de tabelas</h4>
+      <!-- Passo a passo -->
+      <div class="secao-passo-a-passo">
+        <mat-vertical-stepper [linear]="true" #stepper>
+          <mat-step [stepControl]="tipoDeArquivo">
+            <form [formGroup]="tipoDeArquivo">
+              <ng-template matStepLabel>Escolha o tipo de arquivo</ng-template>
+              <mat-form-field>
+                <mat-select
+                  formControlName="tipo"
+                  name="tipo"
+                  required
+                  (selectionChange)="selecionarTipo()"
+                >
+                  <mat-option disabled selected value=""
+                    >Selecione o tipo</mat-option
+                  >
+                  <mat-option value="0">Acesso docente AMI</mat-option>
+                  <mat-option value="1">Acesso docente AMP</mat-option>
+                  <mat-option value="2">Aulas publicadas</mat-option>
+                  <mat-option value="3">Vinculação de conteúdo</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div>
+                <button mat-button matStepperNext>Próximo passo</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="arquivo">
+            <form [formGroup]="arquivo">
+              <ng-template matStepLabel>Selecione o arquivo</ng-template>
+              <input-file
+                placeholder="Arquivo"
+                formControlName="data"
+                name="data"
+                required
+              >
+              </input-file>
+              <div>
+                <button mat-button matStepperPrevious>Passo anterior</button>
+                <button mat-button matStepperNext (click)="confirm()">
+                  Confirmar dados
+                </button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            <ng-container *ngIf="pendentes.length !== 0; else: listaVazia">
+              <p>
+                A tabela foi compilada, deseja ver os professores pendentes?
+              </p>
+              <button mat-button (click)="openDialog()">Ver</button>
+            </ng-container>
+            <ng-template #listaVazia>
+              <p>A lista está vazia!</p>
+              <p>
+                Cheque se o tipo de arquivo selecionado bate com o tipo da
+                tabela.
+              </p>
+              <p>Tipo selecionado -</p>
+              <p>Nome do arquivo - {{ nomeDoArquivo }}</p>
+            </ng-template>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button (click)="stepper.reset()">Enviar</button>
+            </div>
+          </mat-step>
+        </mat-vertical-stepper>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

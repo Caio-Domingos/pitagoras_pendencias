@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Lista dos pendentes</h1>
+<div mat-dialog-content>
+    <mat-list>
+      <mat-list-item *ngFor="let item of tabela">Professor {{item.professor}} da disciplina {{item.disciplina}} <span *ngIf="item.tipo >= 2">no encontro {{item.encontro}}</span></mat-list-item>
+    </mat-list>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Fechar</button>
+</div>

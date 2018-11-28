@@ -1,0 +1,45 @@
+.main {
+  .secao-passo-a-passo {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
+.sidenav_text {
+    background-color: #1b1b1b;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  
+  .header {
+    z-index: 99999999999;
+  }
+  
+  .icon {
+    padding: 0 14px;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  header {
+    height: 50px;
+  }
+  html,
+  body {
+    min-height: 100%;
+  }
+  .main {
+    height: 100%;
+    background-color: #fffdfd;
+  }
+  
+  .tipo-planilha {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
