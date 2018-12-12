@@ -25,6 +25,8 @@
 
     $app->post('/login', 'HomeController:retornaUnicoUsuario');
     $app->get('/buscar-todos-usuarios', 'HomeController:buscarTodosUsuarios');
+    $app->post('/setar-pendencias', 'HomeController:setarPendencias');
+    
 
  
 
