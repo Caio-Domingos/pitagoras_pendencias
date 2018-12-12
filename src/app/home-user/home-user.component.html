@@ -1,0 +1,26 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav mode="side" opened>
+    <div class="sidenav_text">
+      <div>
+        <p>Pendências</p>
+      </div>
+    </div>
+    <mat-nav-list class="listMenu">
+      <mat-list-item [routerLink]="['/home']" routerLinkActive="activeRouter" [routerLinkActiveOptions]="{ exact: true }">Pagina Inicial</mat-list-item>
+      <!-- <mat-list-item [routerLink]="['/dashboard/adm']" class="colorMainText">Relatórios</mat-list-item> -->
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div>
+      <mat-toolbar class="header" color="primary">
+        <mat-toolbar-row>
+          <span>Pagina inicial</span> <span class="spacer"></span>
+          <mat-icon class="icon">logout</mat-icon>
+        </mat-toolbar-row>
+      </mat-toolbar>
+    </div>
+    <div class="main">
+
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

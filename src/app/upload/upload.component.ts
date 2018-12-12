@@ -9,8 +9,11 @@ import { InputFile } from 'ngx-input-file';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { EspecificacoesDoArquivo } from '../../classes/especificacoesDoArquivo';
 import { Arquivo } from '../../classes/arquivo';
+import { HttpClient } from '@angular/common/http';
 
 type AOA = any[][];
+
+const API_URL = 'localhost/pitagoras_pendencias/backend';
 
 @Component({
   selector: 'pen-upload',
@@ -37,7 +40,11 @@ export class UploadComponent implements OnInit {
     data: new FormControl(new Array<InputFile>(), [Validators.required])
   });
 
-  constructor(private spinner: NgxSpinnerService, public dialog: MatDialog) {}
+  constructor(
+    private spinner: NgxSpinnerService,
+    public dialog: MatDialog,
+    private http: HttpClient
+  ) {}
 
   ngOnInit() {}
 
@@ -121,6 +128,15 @@ export class UploadComponent implements OnInit {
       this.pendentes = this.filtrarPendentes(e);
       this.spinner.hide();
     });
+  }
+
+  send() {
+    this.http
+      .post(API_URL + 'setar-pendencias', this.pendentes)
+      .subscribe(
+        e => console.log('on http', e),
+        err => console.error('erro', err)
+      );
   }
 
   openDialog(): void {

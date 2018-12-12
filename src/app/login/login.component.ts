@@ -13,8 +13,8 @@ export class LoginComponent implements OnInit {
     email: string;
     password: string;
   } = {
-    email: '',
-    password: ''
+      email: 'caio@caio.com.br',
+    password: '123123'
   };
 
   // mock
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
           if (this.login.email === this.correct_email && this.login.password === this.correct_pass) {
             console.log('sucesso');
             this.toastr.success('Logado com sucesso', 'Logado');
-            this.route.navigate(['/upload']);
+            this.route.navigate(['/home']);
 
           } else {
             console.log('erro', [this.login, this.correct_email, this.correct_pass]);

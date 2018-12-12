@@ -14,6 +14,7 @@ import { MaterialBundleModule } from '../material-bundle/material-bundle.module'
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrModule } from 'ngx-toastr';
 import { InputFileConfig, InputFileModule } from 'ngx-input-file';
+import { HomeUserComponent } from './home-user/home-user.component';
 
 const config: InputFileConfig = {};
 
@@ -22,7 +23,8 @@ const config: InputFileConfig = {};
     AppComponent,
     LoginComponent,
     UploadComponent,
-    VerPendentesComponent
+    VerPendentesComponent,
+    HomeUserComponent
   ],
   imports: [
     BrowserModule,
